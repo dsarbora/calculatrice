@@ -16,28 +16,43 @@ return number1 / number2;
 
 
 $(function(){
-  $("#addForm").submit(function(){
-    var numberOne = parseInt($("#numberOne").val());
-    var numberTwo = parseInt($("#numberTwo").val());
-    var result = add(numberOne, numberTwo);
-    $("#result").text(result);
+  $("#myForm").submit(function(){
+    var numberOne = parseFloat($("#numberOne").val());
+    var numberTwo = parseFloat($("#numberTwo").val());
+    var operatorType = $("input:radio[name=operatorType]:checked").val();
+    if(operatorType == "add"){
+      var result = add(numberOne, numberTwo);
+    }
+    else if(operatorType == "subtract"){
+      var result = subtract(numberOne, numberTwo);
+    }
+    else if(operatorType == "multiply"){
+      var result = multiply(numberOne, numberTwo);
+    }
+    else if(operatorType == "divide"){
+      var result = divide(numberOne, numberTwo);
+    }
+    else{
+      alert("You should tell me what to do with these numbers")
+    }
+    $("#result").text(result).toFixed(2);
     event.preventDefault();
   });
 
-$("#subtractForm").submit(function(){
+/*$("#subtractForm").submit(function(){
   var numberOne = parseInt($("#numberOne").val());
   var numberTwo = parseInt($("#numberTwo").val());
   var result = subtract(numberOne, numberTwo);
   $("#result").text(result);
   event.preventDefault();
 });
+*/
 
-
-$("button").click(function(){
+/*$("button").click(function(){
   var myNumber = $(this).text().value;
   alert(myNumber);
   $(".display").text($(".display").val()) + myNumber;
-});
+});*/
 
 }); //end of document(ready) function
 
