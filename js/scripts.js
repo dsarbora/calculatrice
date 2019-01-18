@@ -25,13 +25,19 @@ $(function(){
   });
 
 $("#subtractForm").submit(function(){
-  debugger;
   var numberOne = parseInt($("#numberOne").val());
   var numberTwo = parseInt($("#numberTwo").val());
   var result = subtract(numberOne, numberTwo);
   $("#result").text(result);
   event.preventDefault();
-})
+});
+
+
+$("button").click(function(){
+  var myNumber = $(this).text().value;
+  alert(myNumber);
+  $(".display").text($(".display").val()) + myNumber;
+});
 
 }); //end of document(ready) function
 
